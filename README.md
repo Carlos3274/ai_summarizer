@@ -44,14 +44,5 @@ Esta é uma aplicação que utiliza a API pública Rapid-API para resumir artigo
 
 Contribuições são bem-vindas! Se você deseja contribuir para este projeto, sinta-se à vontade para criar um fork e enviar um pull request. Certifique-se de seguir as diretrizes de contribuição.
 
-## Créditos
 
-Este projeto foi inspirado por (nome do youtuber) e seu tutorial (link para o tutorial do YouTube).
 
-## Licença
-
-Este projeto está licenciado sob a (insira a licença utilizada, por exemplo, MIT License). Consulte o arquivo `LICENSE` para obter mais informações.
-
----
-
-Divirta-se construindo sua aplicação de resumo de artigos e explorando as diferentes tecnologias e conceitos envolvidos! Se tiver alguma dúvida ou precisar de assistência, não hesite em entrar em contato.
