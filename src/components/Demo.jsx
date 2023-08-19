@@ -11,7 +11,7 @@ const Demo = () => {
 
   const [allArticles, setAllArticles] = useState([]);
   const [getSummary, { isFetching, error }] = useLazyGetSummaryQuery();
-  const [copied, setCopied] = useState("")
+  const [copied, setCopied] = useState("");
 
   useEffect(() => {
     const articlesFromLocalStorage = JSON.parse(
@@ -39,96 +39,112 @@ const Demo = () => {
   };
 
   const handleCopy = (copyUrl) => {
-    setCopied(copyUrl)
-    navigator.clipboard.writeText(copyUrl)
-    setTimeout(() => setCopied(false), 3000)
-  }
+    setCopied(copyUrl);
+    navigator.clipboard.writeText(copyUrl);
+    setTimeout(() => setCopied(false), 3000);
+  };
 
   return (
-    <section className="mt-16 w-full max-w-x1">
-      <div className="flex flex-col w-full gap-2">
-        <form
-          className="relative flex justify-center items-center"
-          onSubmit={handleSubmit}
-        >
-          <img
-            src={linkIcon}
-            alt="link_icon"
-            className="absolute left-0 my-2 ml-3 w-5"
-          />
-          <input
-            type="url"
-            placeholder="Cole sua URL"
-            value={article.url}
-            onChange={(e) =>
-              setArticle({
-                ...article,
-                url: e.target.value,
-              })
-            }
-            required
-            className="url_input peer"
-          />
-          <button
-            type="submit"
-            className="submit_btn peer-focus:border-gray-700 peer-focus:text-gray-700"
+    <>
+      <section className="mt-16 w-full max-w-x1">
+        <div className="flex flex-col w-full gap-2">
+          <form
+            className="relative flex justify-center items-center"
+            onSubmit={handleSubmit}
           >
-            ↵
-          </button>
-        </form>
-        {/* Browser URL History */}
-        <div className="flex flex-col gap-1 max-h-60 overflow-y-auto">
-          {allArticles.map((item, index) => (
-            <div
-              key={`link-${index}`}
-              onClick={() => setArticle(item)}
-              className="link_card"
+            <img
+              src={linkIcon}
+              alt="link_icon"
+              className="absolute left-0 my-2 ml-3 w-5"
+            />
+            <input
+              type="url"
+              placeholder="Cole sua URL"
+              value={article.url}
+              onChange={(e) =>
+                setArticle({
+                  ...article,
+                  url: e.target.value,
+                })
+              }
+              required
+              className="url_input peer"
+            />
+            <button
+              type="submit"
+              className="submit_btn peer-focus:border-gray-700 peer-focus:text-gray-700"
             >
-              <div className="copy_btn" onClick={() => handleCopy(item.url)}>
-                <img
-                  src={copied === item.url ? tick : copy}
-                  alt="copy_icon"
-                  className="w-[40%] h-[40%] object-contain"
-                />
+              ↵
+            </button>
+          </form>
+          {/* Browser URL History */}
+          <div className="flex flex-col gap-1 max-h-60 overflow-y-auto">
+            {allArticles.map((item, index) => (
+              <div
+                key={`link-${index}`}
+                onClick={() => setArticle(item)}
+                className="link_card"
+              >
+                <div className="copy_btn" onClick={() => handleCopy(item.url)}>
+                  <img
+                    src={copied === item.url ? tick : copy}
+                    alt="copy_icon"
+                    className="w-[40%] h-[40%] object-contain"
+                  />
+                </div>
+                <p className="flex-1 font-satoshi text-blue-700 font-medium text-sm truncate">
+                  {item.url}
+                </p>
               </div>
-              <p className="flex-1 font-satoshi text-blue-700 font-medium text-sm truncate">
-                {item.url}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-      {/* Display results */}
-      <div className="my-10 max-w-full flex justify-center items-center">
-        {isFetching ? (
-          <img
-            src={loader}
-            alt="loader"
-            className="w-20 h-20 object-contain"
-          />
-        ) : error ? (
-          <p className="font-inter font-bold text-black text-center">
-            Bem, isto não era pra ter acontecido...
-            <br />
-            <span className="font-satoshi font-normal text-gray-700">
-              {error?.data?.error}
-            </span>
-          </p>
-        ) : (
-          article.summary && (
-            <div className="flex flex-col gap-3">
-              <h2 className="font-satoshi font-bold text-gray-600 text-xl">
-             <span className="blue_gradient">Resumo</span> 
-              </h2>
-              <div className="summary_box">
-                <p >{article.summary}</p>
+        {/* Display results */}
+        <div className="my-10 max-w-full flex justify-center items-center">
+          {isFetching ? (
+            <img
+              src={loader}
+              alt="loader"
+              className="w-20 h-20 object-contain"
+            />
+          ) : error ? (
+            <p className="font-inter font-bold text-black text-center">
+              Bem, isto não era pra ter acontecido...
+              <br />
+              <span className="font-satoshi font-normal text-gray-700">
+                {error?.data?.error}
+              </span>
+            </p>
+          ) : (
+            article.summary && (
+              <div className="flex flex-col gap-3">
+                <h2 className="font-satoshi font-bold text-gray-600 text-xl">
+                  <span className="blue_gradient">Resumo</span>
+                </h2>
+                <div className="summary_box">
+                  <p>{article.summary}</p>
+                </div>
               </div>
-            </div>
-          )
-        )}
-      </div>
-    </section>
+            )
+          )}
+        </div>
+      </section>
+      <footer className="my-2">
+        <p className="font-inter text-gray-600 text-center">
+          Feito por{" "}
+          <a
+            href="https://www.linkedin.com/in/jcpontesdev/"
+            className=" hover:underline blue_gradient"
+            target="_blank"
+            rel="noopener noreferrer"
+
+          >
+            José Carlos
+          </a>
+        </p>
+      </footer>
+    </>
   );
-}
+};
 
 export default Demo;
