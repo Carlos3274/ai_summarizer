@@ -58,7 +58,7 @@ const Demo = () => {
           />
           <input
             type="url"
-            placeholder="Coleque sua URL"
+            placeholder="Cole sua URL"
             value={article.url}
             onChange={(e) =>
               setArticle({
