@@ -1,6 +1,6 @@
 # Summize, uma aplicação de Resumo de Artigos com ChatGPT-4 
 
-- Deploy: https://mellifluous-pothos-b4ebd1.netlify.app
+- Deploy: https://ia-summarizer.onrender.com
 
 Esta é uma aplicação que utiliza a API pública Rapid-API para resumir artigos. Ela permite que os usuários insiram URLs de artigos e obtenham um resumo condensado dos mesmos. 
 ## Funcionalidades
