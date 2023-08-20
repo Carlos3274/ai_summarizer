@@ -9,10 +9,6 @@ dotenv.config();
 const app = express();
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.json("hi");
-});
-
 app.get("/summary", (req, res) => {
   const articleUrl = req.query.url;
 
