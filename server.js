@@ -1,4 +1,4 @@
-const PORT = 8000;
+const PORT = 1000;
 import axios from "axios";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -40,4 +40,4 @@ app.get("/summary", (req, res) => {
     });
 });
 
-app.listen(8000, () => console.log(`server is running on port ${PORT}`));
+app.listen(PORT, () => console.log(`server is running on port ${PORT}`));
