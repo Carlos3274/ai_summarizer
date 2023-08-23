@@ -36,7 +36,12 @@ app.get("/summary", (req, res) => {
       res.json(response.data);
     })
     .catch((error) => {
-      console.error(error);
+      if (error.response) {
+        res.status(error.response.status).json(error.response.data);
+      } else {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+      }
     });
 });
 
